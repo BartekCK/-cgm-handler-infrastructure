@@ -2,7 +2,7 @@
   "name": "cgm-handler-infrastructure",
   "version": "0.1.0",
   "bin": {
-    "cgm-handler-infrastructure": "bin/cgm-handler-infrastructure.js"
+    "cgm-handler-infrastructure": "src/app.ts"
   },
   "scripts": {
     "build": "tsc",
