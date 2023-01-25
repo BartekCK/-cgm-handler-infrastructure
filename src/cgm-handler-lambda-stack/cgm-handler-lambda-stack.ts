@@ -19,7 +19,18 @@ export class CgmHandlerLambdaStack extends cdk.Stack {
         const myFunction = new lambda.DockerImageFunction(this, 'cgmHandlerLambda', {
             architecture: lambda.Architecture.X86_64,
             logRetention: RetentionDays.THREE_DAYS,
-            environment: {},
+            environment: {
+                DEXCOM_USERNAME: env.dexcomUsername,
+                DEXCOM_PASSWORD: env.dexcomPassword,
+                DEXCOM_APPLICATION_ID: env.dexcomApplicationId,
+                DEXCOM_USER_LOCATION: env.dexcomUserLocation,
+                DEFAULT_MAX_COUNT: env.defaultMaxCount,
+                DATABASE_HOST: env.databaseHost,
+                DATABASE_PORT: env.databasePort,
+                DATABASE_USER: env.databaseUser,
+                DATABASE_PASSWORD: env.databasePassword,
+                DATABASE_NAME: env.databaseName,
+            },
             code: lambda.DockerImageCode.fromEcr(ecrRepository, {
                 tagOrDigest: env.imageTag,
             }),

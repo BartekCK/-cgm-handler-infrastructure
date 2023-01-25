@@ -6,7 +6,7 @@
   },
   "scripts": {
     "deploy:ecr": "cdk deploy CgmHandlerEcrStack --require-approval=never",
-    "deploy:lambda": "cdk deploy CgmHandlerInfrastructureStack --require-approval=never --env imageTag=ala",
+    "deploy:lambda": "cdk deploy CgmHandlerInfrastructureStack --require-approval=never",
     "deploy:all": "cdk deploy --all --require-aproval never",
     "watch": "tsc -w",
     "test": "jest",

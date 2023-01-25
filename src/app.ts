@@ -12,6 +12,19 @@ const env: EnvConfig = {
     account: process.env['AWS_ACCOUNT_ID'] as string,
     region: process.env['AWS_DEFAULT_REGION'] as string,
     imageTag: process.env['IMAGE_TAG'] as string,
+
+    dexcomUsername: process.env['DEXCOM_USERNAME'] as string,
+    dexcomPassword: process.env['DEXCOM_PASSWORD'] as string,
+    dexcomApplicationId: process.env['DEXCOM_APPLICATION_ID'] as string,
+    dexcomUserLocation: process.env['DEXCOM_USER_LOCATION'] as string,
+
+    defaultMaxCount: process.env['DEFAULT_MAX_COUNT'] as string,
+
+    databaseHost: process.env['DATABASE_HOST'] as string,
+    databasePort: process.env['DATABASE_PORT'] as string,
+    databaseUser: process.env['DATABASE_USER'] as string,
+    databasePassword: process.env['DATABASE_PASSWORD'] as string,
+    databaseName: process.env['DATABASE_NAME'] as string,
 };
 
 const cgmHandlerEcrStack = new CgmHandlerEcrStack(app, 'CgmHandlerEcrStack', {
