@@ -34,7 +34,7 @@ const cgmHandlerEcrStack = new CgmHandlerEcrStack(app, 'CgmHandlerEcrStack', {
     },
 });
 
-new CgmHandlerLambdaStack(app, 'CgmHandlerInfrastructureStack', {
+new CgmHandlerLambdaStack(app, 'CgmHandlerLambdaStack', {
     ecrRepository: cgmHandlerEcrStack.cgmHandlerRepository,
     env,
     stackName: 'CgmHandlerInfrastructure',
