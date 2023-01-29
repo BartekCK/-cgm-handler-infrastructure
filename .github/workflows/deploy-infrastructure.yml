@@ -53,7 +53,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Update AWS Lambda infrastructure
+      - name: Update AWS infrastructure
         env:
           IMAGE_TAG: ${{ env.IMAGE_TAG }}
           AWS_DEFAULT_REGION: ${{ env.AWS_DEFAULT_REGION }}
