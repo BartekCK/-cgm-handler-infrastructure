@@ -4,6 +4,8 @@ import * as lambda from 'aws-cdk-lib/aws-lambda';
 import { Construct } from 'constructs';
 import { RetentionDays } from 'aws-cdk-lib/aws-logs';
 import { EnvConfig } from '../common/envConfig';
+import * as events from 'aws-cdk-lib/aws-events';
+import * as targets from 'aws-cdk-lib/aws-events-targets';
 
 interface StackProps extends cdk.StackProps {
     ecrRepository: ecr.IRepository;
@@ -34,6 +36,19 @@ export class CgmHandlerLambdaStack extends cdk.Stack {
             code: lambda.DockerImageCode.fromEcr(ecrRepository, {
                 tagOrDigest: env.imageTag,
             }),
+            timeout: cdk.Duration.seconds(10),
         });
+
+        const eventRule = new events.Rule(this, 'fifteenMinuteRule', {
+            schedule: events.Schedule.cron({ minute: '0/15' }),
+        });
+
+        eventRule.addTarget(
+            new targets.LambdaFunction(myFunction, {
+                event: events.RuleTargetInput.fromObject({ maxCount: 30 }),
+            }),
+        );
+
+        targets.addLambdaPermission(eventRule, myFunction);
     }
 }
