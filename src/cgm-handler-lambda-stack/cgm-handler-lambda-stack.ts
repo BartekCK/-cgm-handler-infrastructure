@@ -45,7 +45,7 @@ export class CgmHandlerLambdaStack extends cdk.Stack {
 
         eventRule.addTarget(
             new targets.LambdaFunction(myFunction, {
-                event: events.RuleTargetInput.fromObject({ maxCount: 30 }),
+                event: events.RuleTargetInput.fromObject({ maxCount: 10 }),
             }),
         );
 
